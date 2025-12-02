@@ -17,6 +17,7 @@ void update_dial(int *current_postition, std::string instruction){
 int main(){
 
     int dial_postition { 50 }; 
+    int zero_count { 0 };
     std::string turn_instruction;
     std::ifstream rotations_file("rotations.csv");
 
@@ -29,9 +30,12 @@ int main(){
         if (!turn_instruction.empty()) {
         update_dial(&dial_postition, turn_instruction);
         }
+        if(dial_postition == 0) {
+            zero_count++;
+        }
     }
 
 
-    std::cout << dial_postition << '\n';
+    std::cout << zero_count << '\n';
     return 0; 
 }
